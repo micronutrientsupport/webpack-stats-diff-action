@@ -54,8 +54,8 @@ async function run() {
         extensions: parseExtensionExpression(core.getInput("image_extensions")),
       },
       {
-        name: "others",
-        extensions: parseExtensionExpression(core.getInput("other_extensions")),
+        name: "misc",
+        extensions: parseExtensionExpression(core.getInput("misc_extensions")),
       },
     ];
 

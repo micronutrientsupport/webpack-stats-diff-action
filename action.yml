@@ -14,7 +14,7 @@ inputs:
   document_extensions:
     description: 'A list of extensions to identify document assets by'
     required: false
-    default: 'html'
+    default: 'html,md,rst'
   script_extensions:
     description: 'A list of extensions to identify script assets by'
     required: false
@@ -27,10 +27,10 @@ inputs:
     description: 'A list of extensions to identify image assets by'
     required: false
     default: 'jpg,jpeg,png,svg,ico'
-  other_extensions:
-    description: 'A list of extensions to identify other assets by'
+  misc_extensions:
+    description: 'A list of extensions to identify misc assets by'
     required: false
-    default: 'js.map'
+    default: 'json,geojson,yml,yaml,toml,js.map'
 branding:
   icon: 'package'
   color: 'green'
