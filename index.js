@@ -86,14 +86,18 @@ async function run() {
 
     const summaryTable = markdownTable([
       ["Asset group", "Old size", "New size", "Diff"],
-      assetGroupStatsDiffs.map((assetGroupStatsDiff) => [
-        assetGroupStatsDiff.group.name,
-        fileSize(diff.total.oldSize),
-        fileSize(diff.total.newSize),
-        `${fileSize(diff.total.diff)} (${diff.total.diffPercentage.toFixed(
-          2
-        )}%)`,
-      ]),
+      assetGroupStatsDiffs.map((assetGroupStatsDiff) => {
+        const groupName = assetGroupStatsDiff.name;
+        const diff = assetGroupStatsDiff.statsDiff;
+        return [
+          groupName,
+          fileSize(diff.total.oldSize),
+          fileSize(diff.total.newSize),
+          `${fileSize(diff.total.diff)} (${diff.total.diffPercentage.toFixed(
+            2
+          )}%)`,
+        ];
+      }),
     ]);
 
     /**

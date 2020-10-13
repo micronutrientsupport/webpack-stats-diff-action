@@ -911,9 +911,7 @@ async function run() {
     };
 
     const assetGroupStatsDiffs = assetGroups
-      .filter(
-        (assetGroup) => assetGroup.extensions.extensions !== SKIP_EXTENSIONS
-      )
+      .filter((assetGroup) => assetGroup.extensions !== SKIP_EXTENSIONS)
       .map((assetGroup) => ({
         group: assetGroup,
         statsDiff: getStatsDiff(assets.base, assets.head, {
@@ -926,14 +924,18 @@ async function run() {
 
     const summaryTable = markdownTable([
       ["Asset group", "Old size", "New size", "Diff"],
-      assetGroupStatsDiffs.map((assetGroupStatsDiff) => [
-        assetGroupStatsDiff.group.name,
-        fileSize(diff.total.oldSize),
-        fileSize(diff.total.newSize),
-        `${fileSize(diff.total.diff)} (${diff.total.diffPercentage.toFixed(
-          2
-        )}%)`,
-      ]),
+      assetGroupStatsDiffs.map((assetGroupStatsDiff) => {
+        const groupName = assetGroupStatsDiff.name;
+        const diff = assetGroupStatsDiff.statsDiff;
+        return [
+          groupName,
+          fileSize(diff.total.oldSize),
+          fileSize(diff.total.newSize),
+          `${fileSize(diff.total.diff)} (${diff.total.diffPercentage.toFixed(
+            2
+          )}%)`,
+        ];
+      }),
     ]);
 
     /**
