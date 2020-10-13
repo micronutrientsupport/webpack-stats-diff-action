@@ -73,9 +73,7 @@ async function run() {
     };
 
     const assetGroupStatsDiffs = assetGroups
-      .filter(
-        (assetGroup) => assetGroup.extensions.extensions !== SKIP_EXTENSIONS
-      )
+      .filter((assetGroup) => assetGroup.extensions !== SKIP_EXTENSIONS)
       .map((assetGroup) => ({
         group: assetGroup,
         statsDiff: getStatsDiff(assets.base, assets.head, {
