@@ -925,7 +925,7 @@ async function run() {
     const summaryTable = markdownTable([
       ["Asset group", "Old size", "New size", "Diff"],
       ...assetGroupStatsDiffs.map((assetGroupStatsDiff) => {
-        const groupName = assetGroupStatsDiff.name;
+        const groupName = assetGroupStatsDiff.group.name;
         const diff = assetGroupStatsDiff.statsDiff;
         return [
           groupName,
